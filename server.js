@@ -5,6 +5,7 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import "dotenv/config";
 import mongoose from "mongoose";
+import { Club } from "./models/club.js";
 
 const PORT = process.env.PORT || 3000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -41,5 +42,11 @@ connectDB().catch((err) => console.log(err));
 
 async function connectDB() {
 	const connection = await mongoose.connect(url_db);
-	console.log(typeof mongooses);
+	const newClub = new Club({
+		name: "fluor",
+		location: "Amersfoort",
+		room: "fluor_amersfoort",
+	});
+	const club = await newClub.save();
+	console.log(club);
 }
