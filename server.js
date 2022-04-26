@@ -20,3 +20,13 @@ server.listen(PORT, () => {
 app.get("/", (req, res) => {
 	res.render("index");
 });
+
+app.get("/room", (req, res) => {
+	console.log(req.params.roomId);
+});
+
+app.get("/room/:roomId", (req, res) => {});
+
+app.get("/admin");
+
+app.post("/request");
