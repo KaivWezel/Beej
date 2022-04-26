@@ -3,13 +3,16 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const clubSchema = new Schema({
-	clubName: String,
+	name: String,
 	location: String,
-	requestLimit: Number,
+	room: String,
+	queue: [String],
 	slots: [
 		{
 			slot: Number,
-			request: ObjectId,
+			request: Schema.Types.ObjectId,
+			date: Date,
+			time: String,
 		},
 	],
 });
