@@ -2,12 +2,13 @@
 <html lang="en">
 	<head>
 		<%- include('./partials/head.ejs') %>
+		<script></script>
 	</head>
 	<body>
 		<header></header>
 		<main>
 			<h1>ParQ, Vraag je favoriete nummer aan bij de DJ</h1>
-			<a href="/create-room">Voeg je club toe</a>
+			<a href="/admin">Voeg je club toe</a>
 			<form action="/room" method="post">
 				<label for="roomId">Zoek je club</label>
 				<input type="text" id="roomId" name="roomId" />
