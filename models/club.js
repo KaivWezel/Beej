@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const clubSchema = new Schema({
-	name: String,
+	name: {
+		type: String,
+	},
 	location: String,
 	room: String,
 	queue: [String],
@@ -17,4 +19,4 @@ const clubSchema = new Schema({
 	],
 });
 
-export const Club = mongoose.model("Club", clubSchema);
+export default mongoose.model("club", clubSchema);
