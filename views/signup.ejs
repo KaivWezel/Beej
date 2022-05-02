@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('./partials/head.ejs') %>
+	</head>
+	<body>
+		<h1>Schrijf je club in</h1>
+		<form action="/signup" method="post" class="club">
+			<label for="clubName">Wat is de naam van uw club?</label>
+			<input type="text" name="name" id="clubName" />
+			<label for="clubCity">Waar is uw club gevestigd?</label>
+			<input type="text" name="location" id="clubCity" />
+			<label for="requestLimit">Hoeveel aanvragen wilt u toestaan?</label>
+			<input type="number" name="requests" id="requestLimit" /> per uur.
+			<button>toevoegen</button>
+		</form>
+	</body>
+</html>
