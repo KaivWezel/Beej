@@ -21,13 +21,13 @@ router.post("/signup", async (req, res, next) => {
 				res.redirect("/login");
 			} else {
 				const hashedPass = await bcrypt.hash(req.body.password, 10);
-				console.log(hashedPass);
 				const newUser = new User({
 					username: req.body.username,
 					password: hashedPass,
 				});
 				const user = await newUser.save();
 			}
+			res.redirect("/login");
 		});
 	} catch (err) {}
 });
@@ -43,6 +43,16 @@ router.post(
 		failureRedirect: "/login",
 	})
 );
+
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+	User.findById(id, (err, user) => {
+		done(err, user);
+	});
+});
 
 passport.use(
 	new LocalStrategy((username, password, done) => {
@@ -65,6 +75,7 @@ passport.use(
 			});
 		} catch (err) {
 			console.log(err);
+			return done(err);
 		}
 	})
 );
