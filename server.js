@@ -6,7 +6,8 @@ import { fileURLToPath } from "url";
 import "dotenv/config";
 import mongoose from "mongoose";
 import Club from "./models/Club.js";
-import { router as adminRouter } from "./Routers/admin.js";
+import { router as clubRouter } from "./Routers/clubRouter.js";
+import { router as authRouter } from "./Routers/authRouter.js";
 
 const PORT = process.env.PORT || 3000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -16,21 +17,12 @@ const io = new Server(server);
 
 const url_db = process.env.DB_HOST;
 
-async function connectDB() {
-	const connection = await mongoose.connect(url_db);
-	console.log("mongoDB connected");
-}
-
 app.set("view engine", "ejs").set("views", path.join(__dirname, "./views"));
 app
 	.use(express.static(path.join(__dirname, "/public")))
 	.use(express.urlencoded())
 	.use(express.json());
-app.use("/admin", adminRouter);
-
-app.post("/usernames", async (req, res) => {
-	console.log(req.body);
-});
+app.use("/", authRouter);
 
 server.listen(PORT, () => {
 	console.log(`listening to port: ${PORT}`);
@@ -40,10 +32,12 @@ app.get("/", (req, res) => {
 	res.render("index");
 });
 
-app.get("/room", (req, res) => {
-	console.log(req.params.roomId);
-});
-
-app.get("/room/:roomId", (req, res) => {});
-
-connectDB().catch((err) => console.log(err));
+export const db = async () => {
+	try {
+		const connection = await mongoose.connect(url_db);
+		console.log("MongoDb connected");
+		return connection;
+	} catch (err) {
+		console.log(err);
+	}
+};
