@@ -1,10 +1,6 @@
 import express from "express";
 import passport from "passport";
 import LocalStrategy from "passport-local";
-import crypto from "crypto";
-import { db } from "../server.js";
-import Club from "../models/Club.js";
-import { club_create } from "../controllers/clubsController.js";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
