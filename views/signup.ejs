@@ -6,13 +6,27 @@
 	<body>
 		<h1>Schrijf je club in</h1>
 		<form action="/signup" method="post" class="club">
-			<label for="clubName">Wat is de naam van uw club?</label>
-			<input type="text" name="name" id="clubName" />
-			<label for="clubCity">Waar is uw club gevestigd?</label>
-			<input type="text" name="location" id="clubCity" />
-			<label for="requestLimit">Hoeveel aanvragen wilt u toestaan?</label>
-			<input type="number" name="requests" id="requestLimit" /> per uur.
-			<button>toevoegen</button>
+			<div>
+				<label for="username">Username</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					autocomplete="username"
+					required
+					autofocus
+				/>
+			</div>
+			<div>
+				<label for="current-password">Password</label>
+				<input
+					type="password"
+					id="current-password"
+					autocomplete="current-password"
+					name="password"
+				/>
+			</div>
+			<button>Sign up</button>
 		</form>
 	</body>
 </html>

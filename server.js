@@ -41,3 +41,5 @@ export const db = async () => {
 		console.log(err);
 	}
 };
+
+db();

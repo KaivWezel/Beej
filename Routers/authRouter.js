@@ -21,10 +21,12 @@ router.post("/signup", async (req, res, next) => {
 				res.redirect("/login");
 			} else {
 				const hashedPass = await bcrypt.hash(req.body.password, 10);
+				console.log(hashedPass);
 				const newUser = new User({
 					username: req.body.username,
 					password: hashedPass,
 				});
+				const user = await newUser.save();
 			}
 		});
 	} catch (err) {}
