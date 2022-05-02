@@ -3,9 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const clubSchema = new Schema({
-	name: {
-		type: String,
-	},
+	name: String,
 	location: String,
 	room: String,
 	queue: [String],
