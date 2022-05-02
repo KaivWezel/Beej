@@ -9,5 +9,5 @@ export const club_create = async (req, res, next) => {
 		room: req.body.name + "_" + req.body.location,
 	});
 	const savedClub = await club.save();
-	res.redirect(`/admin/${savedClub.name}`);
+	res.redirect("/");
 };
