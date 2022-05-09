@@ -56,30 +56,45 @@ button {
   border-radius: 2px;
   border: none;
   margin: auto;
+  cursor: pointer;
 }
 
-.signup {
+button:disabled {
+  background-color: gray;
+}
+
+.signup,
+.login {
   margin: 1rem;
   text-align: center;
 }
-.signup .input-field {
+.signup .input-field,
+.login .input-field {
   position: relative;
   text-align: center;
   width: fit-content;
   margin: auto;
 }
-.signup .input-field label {
+.signup .input-field label,
+.login .input-field label {
   position: absolute;
   padding: 0.5rem 0;
   transition: 0.2s ease;
   top: 0;
   left: 0;
 }
-.signup .input-field input:focus ~ label, .signup .input-field input:valid ~ label {
+.signup .input-field input:focus ~ label, .signup .input-field input:valid ~ label,
+.login .input-field input:focus ~ label,
+.login .input-field input:valid ~ label {
   top: -1.5rem;
   left: 0;
   color: hsl(194deg, 85%, 62%);
   font-size: 0.75rem;
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+  filter: invert(52%) sepia(32%) saturate(1946%) hue-rotate(189deg) brightness(98%) contrast(91%);
+  color: hsl(212deg, 84%, 61%);
 }
 
 /*# sourceMappingURL=index.css.map */
