@@ -12,20 +12,25 @@ router.get("/signup", (req, res) => {
 
 router.post("/signup", async (req, res, next) => {
 	try {
-		User.findOne({ username: req.body.username }, async (err, user) => {
+		console.log(req.body);
+		User.findOne({ username: req.body.email }, async (err, user) => {
 			if (user) {
-				res.redirect("/login");
+				return;
 			} else {
 				const hashedPass = await bcrypt.hash(req.body.password, 10);
 				const newUser = new User({
-					username: req.body.username,
+					email: req.body.email,
+					username: req.body["club-name"],
+					location: req.body.location,
 					password: hashedPass,
 				});
 				const user = await newUser.save();
 			}
 			res.redirect("/login");
 		});
-	} catch (err) {}
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 router.get("/login", (req, res) => {
@@ -35,43 +40,14 @@ router.get("/login", (req, res) => {
 router.post(
 	"/login",
 	passport.authenticate("local", {
-		successRedirect: "/",
 		failureRedirect: "/login",
-	})
+	}),
+	(req, res) => {
+		res.redirect(`/${req.user.username}/admin`);
+	}
 );
 
-passport.serializeUser((user, done) => {
-	done(null, user.id);
+router.post("/logout", (req, res) => {
+	req.logout();
+	res.redirect("/");
 });
-
-passport.deserializeUser((id, done) => {
-	User.findById(id, (err, user) => {
-		done(err, user);
-	});
-});
-
-passport.use(
-	new LocalStrategy((username, password, done) => {
-		try {
-			User.findOne({ username: username }, (err, user) => {
-				if (err) {
-					return done(err);
-				}
-				if (!user) {
-					return done(null, false);
-				}
-				bcrypt.compare(password, user.password, (err, isMatch) => {
-					if (err) throw err;
-					if (isMatch) {
-						return done(null, user);
-					} else {
-						return doen(null, false, { message: `Passwords don't match` });
-					}
-				});
-			});
-		} catch (err) {
-			console.log(err);
-			return done(err);
-		}
-	})
-);
