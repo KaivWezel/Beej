@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<%- include('./partials/head.ejs') %>
-		<script src="/js/app.js" type="module" defer></script>
+		<script src="/js/admin.js" type="module" defer></script>
 	</head>
 	<body>
 		<header>
@@ -10,6 +10,21 @@
 			<h3><%= user.email %></h3>
 			<h3><%= user.location %></h3>
 		</header>
-		<main></main>
+		<main>
+			<section class="room">
+				<form action="/room" method="post">
+					<button class="open-room">Open biddings</button>
+				</form>
+				<form action="/room" method="delete">
+					<button class="close-room">Close biddings</button>
+				</form>
+				<h3><%= user.roomname %></h3>
+			</section>
+			<section class="slots">
+				<form action="/slot" method="post"></form>
+			</section>
+			<section class="bids"></section>
+			<section class=""></section>
+		</main>
 	</body>
 </html>
