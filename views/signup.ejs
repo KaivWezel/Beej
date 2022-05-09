@@ -5,28 +5,48 @@
 	</head>
 	<body>
 		<h1>Schrijf je club in</h1>
-		<form action="/signup" method="post" class="club">
-			<div>
-				<label for="username">Username</label>
+		<form action="/signup" method="post" class="signup">
+			<div class="input-field">
 				<input
-					type="text"
-					id="username"
-					name="username"
-					autocomplete="username"
+					type="email"
+					id="email"
+					name="email"
+					autocomplete="email"
 					required
 					autofocus
 				/>
+				<label for="email">Email</label>
 			</div>
-			<div>
-				<label for="current-password">Password</label>
+			<div class="input-field">
+				<input type="text" id="club-name" name="club-name" required />
+				<label for="club-name">Naam Club</label>
+			</div>
+			<div class="input-field">
+				<input type="text" id="location" name="location" required />
+				<label for="location">Plaats</label>
+			</div>
+			<div class="input-field">
 				<input
 					type="password"
 					id="current-password"
 					autocomplete="current-password"
 					name="password"
+					required
 				/>
+				<label for="current-password">Password</label>
 			</div>
-			<button>Sign up</button>
+			<!-- <div class="input-field">
+				<i>not implementend yet</i>
+				<input
+                type="password"
+                id="current-password-confirm"
+                autocomplete="current-password"
+                name="password-confirm"
+                required
+				/>
+				<label for="current-password-confirm">Confirm password</label>
+			</div> -->
+			<button type="submit">Sign up</button>
 		</form>
 	</body>
 </html>
