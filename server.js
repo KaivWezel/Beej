@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+export const io = new Server(server);
 
 const url_db = process.env.DB_HOST;
 
@@ -71,4 +71,9 @@ app.get(
 
 io.on("connection", (socket) => {
 	console.log("user connected");
+	socket.on("join-room", (roomId) => {
+		socket.join(roomId);
+		socket.to(roomId).emit("user-joined");
+	});
+	socket.on("bid:send", (roomId) => {});
 });
