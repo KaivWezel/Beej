@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
@@ -29,7 +28,7 @@ const userSchema = new Schema({
 			type: Boolean,
 			default: false,
 		},
-		slots: [ObjectId],
+		slots: [],
 	},
 });
 
