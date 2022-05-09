@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
@@ -17,6 +18,18 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 		required: true,
+	},
+	room: {
+		roomname: {
+			type: String,
+			required: true,
+			lowercase: true,
+		},
+		opened: {
+			type: Boolean,
+			default: false,
+		},
+		slots: [ObjectId],
 	},
 });
 
