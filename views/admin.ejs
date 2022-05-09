@@ -12,16 +12,21 @@
 		</header>
 		<main>
 			<section class="room">
-				<form action="/room" method="post">
-					<button class="open-room">Open biddings</button>
-				</form>
-				<form action="/room" method="delete">
-					<button class="close-room">Close biddings</button>
-				</form>
-				<h3><%= user.roomname %></h3>
+				<h2>Roomname: <%= user.room.roomname %></h2>
+				<button class="open-room" <% if (user.room.opened) { %>
+					disabled <% } %>>Open room
+				</button>
+				<button class="close-room" <% if (!user.room.opened) { %>
+					disabled <% } %>>Close room
+				</button>
 			</section>
 			<section class="slots">
-				<form action="/slot" method="post"></form>
+				<h2>Maak een aanvraag slot</h2>
+				<form action="/slot" method="post">
+					<input type="time" name="time" id="time" />
+					<label for="time">Wanneer start dit nummer?</label>
+					<button type="submit">Aanmaken</button>
+				</form>
 			</section>
 			<section class="bids"></section>
 			<section class=""></section>
