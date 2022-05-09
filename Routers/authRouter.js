@@ -23,7 +23,9 @@ router.post("/signup", async (req, res, next) => {
 					username: req.body["club-name"],
 					location: req.body.location,
 					password: hashedPass,
-					roomname: req.body["club-name"] + "-" + req.body.location,
+					room: {
+						roomname: req.body["club-name"] + "-" + req.body.location,
+					},
 				});
 				const user = await newUser.save();
 			}
