@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import passport from "passport";
 import { router as authRouter } from "./Routers/authRouter.js";
 import { router as clubRouter } from "./Routers/clubRouter.js";
+import { router as roomRouter } from "./Routers/roomRouter.js";
 import { initializePassport } from "./controllers/passport.config.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -54,7 +55,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Router middlewares
-app.use(authRouter).use(clubRouter);
+app.use(authRouter).use(clubRouter).use(roomRouter);
 
 // Routes
 app.get(
@@ -67,3 +68,7 @@ app.get(
 		res.render("index");
 	}
 );
+
+io.on("connection", (socket) => {
+	console.log("user connected");
+});
