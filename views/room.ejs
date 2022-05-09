@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%-include("./partials/head.ejs") %>
+		<script src="/js/app.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1><%= roomId %></h1>
+		</header>
+		<main>
+			<section>
+				<h2>slots</h2>
+				<% for (const slot of slots) { %>
+				<div class="slot">
+					<% if (slot.name) { %>
+					<h3><%= slot.name %></h3>
+					<% } else { %>
+					<h3>Nog geen aanvraag</h3>
+					<% } %>
+				</div>
+				<% } %>
+			</section>
+		</main>
+	</body>
+</html>

@@ -9,6 +9,7 @@
 			<h1>Welkom <%= user.username %></h1>
 			<h3><%= user.email %></h3>
 			<h3><%= user.location %></h3>
+			<a href="/logout">logout</a>
 		</header>
 		<main>
 			<section class="room">
@@ -23,8 +24,8 @@
 			<section class="slots">
 				<h2>Maak een aanvraag slot</h2>
 				<form action="/slot" method="post">
-					<input type="time" name="time" id="time" />
-					<label for="time">Wanneer start dit nummer?</label>
+					<label for="timer">Wanneer start dit nummer?</label>
+					<p>Over <input type="number" name="timer" id="timer" /> minuten</p>
 					<button type="submit">Aanmaken</button>
 				</form>
 			</section>

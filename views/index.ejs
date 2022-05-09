@@ -13,7 +13,11 @@
 			<h4>Wil je je club toevoegen, maak je account aan.</h4>
 			<a href="/signup">Aanmelden voor Beej</a>
 			<a href="/login">Al een account? Log hier in</a>
-			<a href="/scan">Zoek jouw club</a>
+			<form action="/join" method="post">
+				<label for="room">HOe heet je club</label>
+				<input type="text" name="room" id="room" placeholder="Panterhuis" />
+				<button>Join club</button>
+			</form>
 			<h2>Wat is Beej?</h2>
 			<p>
 				BeeJ is een app die het mogelijk maakt om de feestgangers in de club aan
