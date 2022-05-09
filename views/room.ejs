@@ -13,8 +13,9 @@
 				<h2>slots</h2>
 				<% for (const slot of slots) { %>
 				<div class="slot">
-					<% if (slot.name) { %>
-					<h3><%= slot.name %></h3>
+					<p>om: <%= slot.time %></p>
+					<% if (slot.currentBid.song) { %>
+					<h3><%= slot.currentBid.song %></h3>
 					<% } else { %>
 					<h3>Nog geen aanvraag</h3>
 					<% } %>

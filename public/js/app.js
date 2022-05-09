@@ -7,3 +7,7 @@ window.onload = (e) => {
 	const roomId = path.split("").splice(1).join("");
 	socket.emit("join-room", roomId);
 };
+
+socket.on("user-joined", () => {
+	console.log("user joined");
+});

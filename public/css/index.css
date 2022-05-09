@@ -97,4 +97,11 @@ input[type=time]::-webkit-calendar-picker-indicator {
   color: hsl(212deg, 84%, 61%);
 }
 
+.slot {
+  cursor: pointer;
+  background-color: #262626;
+  padding: 1rem;
+  border-radius: 2px;
+}
+
 /*# sourceMappingURL=index.css.map */

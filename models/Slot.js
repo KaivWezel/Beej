@@ -8,7 +8,7 @@ const slotSchema = new Schema({
 	currentBid: {
 		name: String,
 		amount: Number,
-		Song: String,
+		song: String,
 	},
 });
 
