@@ -27,7 +27,7 @@ header {
 }
 
 h1 {
-  color: hsl(333deg, 93%, 56%);
+  color: hsl(333deg, 93%, 46%);
   background-image: linear-gradient(60deg, rgb(76, 201, 240) 16%, rgb(86, 11, 173) 52%, rgb(247, 37, 133) 84%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -100,8 +100,35 @@ input[type=time]::-webkit-calendar-picker-indicator {
 .slot {
   cursor: pointer;
   background-color: #262626;
+  margin: 1rem 0;
   padding: 1rem;
   border-radius: 2px;
+}
+
+.bid-form-wrapper {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  place-items: center;
+  backdrop-filter: blur(8px);
+  background-color: hsla(0deg, 0%, 5%, 0.3);
+}
+.bid-form-wrapper .bid-form {
+  padding: 4rem 3rem;
+  background: hsl(0deg, 0%, 5%);
+  text-align: center;
+}
+.bid-form-wrapper .bid-form .input-field {
+  width: max-content;
+  text-align: right;
+  margin-left: auto;
+}
+
+.show {
+  display: grid;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -16,6 +16,8 @@ router.post("/room", openRoom, (req, res) => {
 });
 
 router.post("/join", (req, res) => {
+	const session = req.session;
+	session.roomId = req.body.room;
 	res.redirect(`/${req.body.room}`);
 });
 
@@ -23,9 +25,20 @@ router.post("/slot", createSlot, (req, res) => {
 	res.redirect(`/${req.user.username}/admin`);
 });
 
+router.post("/bid", express.json(), async (req, res) => {
+	const roomId = req.session.roomId;
+	const bid = req.body;
+	const room = await User.findOne({ "room.roomanme": roomId });
+	console.log(bid);
+	res.json({ foo: "bar" });
+});
+
 router.get("/:room", checkRoom, async (req, res) => {
+	const session = req.session;
+	if (!session.roomId) {
+		session.roomId = req.params.room;
+	}
 	const slots = await Slot.find({ _id: req.user.room.slots });
-	console.log(slots);
 
 	res.render("room", {
 		roomId: req.params.room,
