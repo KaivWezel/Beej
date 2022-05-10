@@ -75,5 +75,7 @@ io.on("connection", (socket) => {
 		socket.join(roomId);
 		socket.to(roomId).emit("user-joined");
 	});
-	socket.on("bid:send", (roomId) => {});
+	socket.on("bid:high", (roomId) => {
+		socket.to(roomId).emit("bid:high");
+	});
 });

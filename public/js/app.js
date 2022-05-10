@@ -15,6 +15,8 @@ slots.forEach((slot) => {
 		bidFormWrapper.classList.add("show");
 		bidForm.onsubmit = async (e) => {
 			e.preventDefault();
+
+			// Gather bid data
 			const data = {
 				slot: id,
 				bid: {
@@ -24,6 +26,8 @@ slots.forEach((slot) => {
 					amount: e.target[3].valueAsNumber,
 				},
 			};
+
+			// Send bid to server and wait for confirmation
 			const res = await fetch("http://localhost:3000/bid", {
 				headers: {
 					"Content-Type": "application/json",
@@ -35,6 +39,9 @@ slots.forEach((slot) => {
 				mode: "cors",
 				credentials: "include",
 			});
+
+			// Emit event of highest bid
+			socket.emit("bid:high", roomId);
 		};
 	});
 });
