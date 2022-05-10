@@ -33,6 +33,12 @@ router.post("/bid", express.json(), async (req, res) => {
 	res.json({ foo: "bar" });
 });
 
+router.get("/slots", async (req, res) => {
+	console.log(req.session);
+	const slots = await Slot.find({ room: req.session.roomId }).exec();
+	res.send(JSON.stringify(slots));
+});
+
 router.get("/:room", checkRoom, async (req, res) => {
 	const session = req.session;
 	if (!session.roomId) {

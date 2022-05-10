@@ -58,16 +58,9 @@ app.use(passport.session());
 app.use(authRouter).use(clubRouter).use(roomRouter);
 
 // Routes
-app.get(
-	"/",
-	(req, res, next) => {
-		console.log(req.user);
-		next();
-	},
-	(req, res) => {
-		res.render("index");
-	}
-);
+app.get("/", (req, res) => {
+	res.render("index");
+});
 
 io.on("connection", (socket) => {
 	console.log("user connected");
@@ -76,6 +69,7 @@ io.on("connection", (socket) => {
 		socket.to(roomId).emit("user-joined");
 	});
 	socket.on("bid:high", (roomId) => {
+		console.log("high bid");
 		socket.to(roomId).emit("bid:high");
 	});
 });

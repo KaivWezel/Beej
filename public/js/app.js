@@ -7,6 +7,8 @@ const bidFormWrapper = document.querySelector(".bid-form-wrapper");
 const bidForm = document.querySelector(".bid-form");
 const slots = document.querySelectorAll(".slot");
 console.log(slots);
+console.log(window.location);
+const url_origin = window.location.origin;
 
 // Eventlisteners
 slots.forEach((slot) => {
@@ -28,12 +30,10 @@ slots.forEach((slot) => {
 			};
 
 			// Send bid to server and wait for confirmation
-			const res = await fetch("http://localhost:3000/bid", {
+			const res = await fetch(`${url_origin}/bid`, {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				referrer: "http://localhost:3000/shots-amersfoort",
-				referrerPolicy: "strict-origin-when-cross-origin",
 				body: JSON.stringify(data),
 				method: "POST",
 				mode: "cors",
@@ -53,29 +53,15 @@ bidFormWrapper.addEventListener("click", (e) => {
 	}
 });
 
-// bidForm.addEventListener("submit", async (e) => {
-// 	e.preventDefault();
-// 	const data = {
-// 		name: e.target[0].value,
-// 		songTitle: e.target[1].value,
-// 		songArtist: e.target[2].value,
-// 		amount: e.target[3].valueAsNumber,
-// 	};
-// 	const res = await fetch("http://localhost:3000/bid", {
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		referrer: "http://localhost:3000/shots-amersfoort",
-// 		referrerPolicy: "strict-origin-when-cross-origin",
-// 		body: JSON.stringify(data),
-// 		method: "POST",
-// 		mode: "cors",
-// 		credentials: "include",
-// 	});
-// });
-
 socket.emit("join-room", roomId);
 
 socket.on("user-joined", () => {
 	console.log("user joined");
+});
+
+socket.on("bid:high", async (bid) => {
+	const res = await fetch(`${url_origin}/slots`);
+	const data = await res.json();
+
+	// Update bidding cards
 });
