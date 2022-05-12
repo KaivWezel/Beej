@@ -7,9 +7,6 @@ const bidFormWrapper = document.querySelector(".bid-form-wrapper");
 const bidForm = document.querySelector(".bid-form");
 const slotsList = document.querySelector(".slots-list");
 const slots = document.querySelectorAll(".slot");
-
-console.log(slots);
-console.log(window.location);
 const url_origin = window.location.origin;
 
 // Eventlisteners
@@ -76,7 +73,6 @@ socket.on("user-joined", () => {
 socket.on("bid:high", async (bid) => {
 	const res = await fetch(`${url_origin}/slots`);
 	const data = await res.json();
-	console.log(data);
 	// Update bidding cards
 	data.forEach((slot) => {
 		const newSlot = document.querySelector(`div[data-slot="${slot._id}"]`);

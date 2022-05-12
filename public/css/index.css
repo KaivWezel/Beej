@@ -105,6 +105,13 @@ input[type=time]::-webkit-calendar-picker-indicator {
   padding: 1rem;
   border-radius: 2px;
 }
+.slot button {
+  margin: initial;
+}
+.slot .status {
+  display: flex;
+  justify-content: space-between;
+}
 
 .bid-form-wrapper {
   display: none;

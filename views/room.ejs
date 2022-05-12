@@ -17,7 +17,7 @@
 						<p>om: <%= slot.time %></p>
 						<% if (slot.song) { %>
 						<h3><%= slot.song %></h3>
-						<p><%= slot.amount%> - <%= slot.name %></p>
+						<p><%= slot.name%> - <%= slot.amount %> euro</p>
 						<% } else { %>
 						<h3>Nog geen aanvraag</h3>
 						<% } %>
@@ -40,7 +40,7 @@
 						<input type="text" name="songartist" id="songartist" />
 					</div>
 					<div class="input-field">
-						<label for="amount">Hoeveel bied je?</label>
+						<label for="amount">Hoeveel bied je? (euro)</label>
 						<input type="number" name="amount" id="amount" />
 					</div>
 					<button type="submit">Zend in</button>

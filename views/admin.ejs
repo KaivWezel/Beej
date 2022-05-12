@@ -25,12 +25,26 @@
 				<h2>Maak een aanvraag slot</h2>
 				<form action="/slot" method="post">
 					<label for="timer">Wanneer start dit nummer?</label>
-					<p>Over <input type="number" name="timer" id="timer" /> minuten</p>
+					<p>Om <input type="text" name="timer" id="timer" /></p>
 					<button type="submit">Aanmaken</button>
 				</form>
+				<div class="current-slots">
+					<% slots.forEach(slot => { %>
+					<div class="slot" data-slot="<%= slot.id %>">
+						<div class="status">
+							<p>om: <%= slot.time %></p>
+							<button class="delete-slot">Sluiten</button>
+						</div>
+						<% if (slot.song) { %>
+						<h3><%= slot.song %></h3>
+						<p><%= slot.amount%> - <%= slot.name %></p>
+						<% } else { %>
+						<h3>Nog geen aanvraag</h3>
+						<% } %>
+					</div>
+					<% }) %>
+				</div>
 			</section>
-			<section class="bids"></section>
-			<section class=""></section>
 		</main>
 	</body>
 </html>
