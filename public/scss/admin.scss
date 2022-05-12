@@ -1,0 +1,41 @@
+@import "./variables";
+
+section {
+	margin-bottom: 3rem;
+}
+
+.slot {
+	background: rgb(240, 98, 76);
+	background: linear-gradient(
+		90deg,
+		rgb(212, 68, 46) 50%,
+		lighten($background-color, 10%) 50%
+	);
+	background-size: 230%;
+	background-position-x: 100%;
+	transition: 0.2s ease;
+}
+
+.closed {
+	animation: deleted 0.8s ease-out forwards;
+	pointer-events: none;
+	cursor: initial;
+}
+
+@keyframes deleted {
+	0% {
+		background-position-x: 100%;
+	}
+	40% {
+		background-position-x: 0%;
+		opacity: 1;
+	}
+	60% {
+		background-position-x: 0%;
+		opacity: 1;
+	}
+	100% {
+		background-position-x: 0%;
+		opacity: 0;
+	}
+}

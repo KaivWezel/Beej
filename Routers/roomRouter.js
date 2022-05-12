@@ -25,6 +25,11 @@ router.post("/slot", createSlot, (req, res) => {
 	res.redirect(`/${req.user.username}/admin`);
 });
 
+router.delete("/slot/:id", async (req, res) => {
+	const slot = await Slot.deleteOne({ id: req.params.id });
+	console.log(slot);
+});
+
 router.post("/bid", express.json(), async (req, res) => {
 	const roomId = req.session.roomId;
 	const bid = req.body.bid;
