@@ -11,17 +11,19 @@
 		<main>
 			<section>
 				<h2>slots</h2>
-				<% slots.forEach(slot => { %>
-				<div class="slot" data-slot="<%= slot.id %>">
-					<p>om: <%= slot.time %></p>
-					<% if (slot.song) { %>
-					<h3><%= slot.song %></h3>
-					<p><%= slot.amount%> - <%= slot.name %></p>
-					<% } else { %>
-					<h3>Nog geen aanvraag</h3>
-					<% } %>
+				<div class="slots-list">
+					<% slots.forEach(slot => { %>
+					<div class="slot" data-slot="<%= slot.id %>">
+						<p>om: <%= slot.time %></p>
+						<% if (slot.song) { %>
+						<h3><%= slot.song %></h3>
+						<p><%= slot.amount%> - <%= slot.name %></p>
+						<% } else { %>
+						<h3>Nog geen aanvraag</h3>
+						<% } %>
+					</div>
+					<% }) %>
 				</div>
-				<% }) %>
 			</section>
 			<div class="bid-form-wrapper">
 				<form action="/bid" method="post" class="bid-form">

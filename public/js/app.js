@@ -5,7 +5,9 @@ const path = window.location.pathname;
 const roomId = path.split("").splice(1).join("");
 const bidFormWrapper = document.querySelector(".bid-form-wrapper");
 const bidForm = document.querySelector(".bid-form");
+const slotsList = document.querySelector(".slots-list");
 const slots = document.querySelectorAll(".slot");
+
 console.log(slots);
 console.log(window.location);
 const url_origin = window.location.origin;
@@ -17,6 +19,8 @@ slots.forEach((slot) => {
 		bidFormWrapper.classList.add("show");
 		bidForm.onsubmit = async (e) => {
 			e.preventDefault();
+			// Hide form
+			bidFormWrapper.classList.remove("show");
 
 			// Gather bid data
 			const data = {
@@ -42,6 +46,14 @@ slots.forEach((slot) => {
 
 			const obj = await res.json();
 			const currentBid = obj.newBid;
+			// Confirm bid
+			// ....
+			// ....
+			// ....
+			// On confirm, redefine card
+			slot.children[0].innerText = `Begint om ${currentBid.time}`;
+			slot.children[1].innerText = currentBid.song;
+			slot.children[2].innerText = `${currentBid.name} - ${currentBid.amount} euro`;
 
 			// Emit event of highest bid
 			socket.emit("bid:high", roomId, data);
@@ -66,7 +78,16 @@ socket.on("bid:high", async (bid) => {
 	const data = await res.json();
 	console.log(data);
 	// Update bidding cards
+	data.forEach((slot) => {
+		const newSlot = document.querySelector(`div[data-slot="${slot._id}"]`);
+		newSlot.children[0].innerText = `Begint om ${slot.time}`;
+		newSlot.children[1].innerText = slot.song ? slot.song : "Nog geen aanvraag";
+		if (newSlot.children[2]) {
+			newSlot.children[2].innerText = slot.name
+				? `${slot.name} - ${slot.amount} euro`
+				: "-";
+		}
+	});
 });
 
 // Create new card element for new bid
-const slotCard = () => {};
