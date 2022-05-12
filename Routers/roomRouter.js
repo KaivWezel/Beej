@@ -27,10 +27,11 @@ router.post("/slot", createSlot, (req, res) => {
 
 router.post("/bid", express.json(), async (req, res) => {
 	const roomId = req.session.roomId;
-	const bid = req.body;
+	const bid = req.body.bid;
 	const room = await User.findOne({ "room.roomanme": roomId });
-	console.log(bid);
-	res.json({ foo: "bar" });
+	const slot = await Slot.findOne({ id: req.body.slot });
+	const newBid = await compare_bid(slot, bid);
+	res.json({ newBid });
 });
 
 router.get("/slots", async (req, res) => {
@@ -51,3 +52,25 @@ router.get("/:room", checkRoom, async (req, res) => {
 		slots: slots,
 	});
 });
+
+const compare_bid = async (slot, bid) => {
+	console.log(slot, bid);
+	if (!slot.amount) {
+		console.log("new bid");
+		slot["amount"] = bid.amount;
+		slot["name"] = bid.name;
+		slot["song"] = bid.songTitle + " - " + bid.songArtist;
+		const newSlot = await slot.save();
+		return newSlot;
+	} else if (slot.amount < bid.amount) {
+		console.log("higher bid");
+		slot["amount"] = bid.amount;
+		slot["name"] = bid.name;
+		slot["song"] = bid.songTitle + " - " + bid.songArtist;
+		const newSlot = await slot.save();
+		return newSlot;
+	} else {
+		console.log("nothing happened");
+		return slot;
+	}
+};

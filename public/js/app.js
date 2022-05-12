@@ -40,14 +40,16 @@ slots.forEach((slot) => {
 				credentials: "include",
 			});
 
+			const obj = await res.json();
+			const currentBid = obj.newBid;
+
 			// Emit event of highest bid
-			socket.emit("bid:high", roomId);
+			socket.emit("bid:high", roomId, data);
 		};
 	});
 });
 
 bidFormWrapper.addEventListener("click", (e) => {
-	console.log(e);
 	if (e.target === bidFormWrapper) {
 		bidFormWrapper.classList.remove("show");
 	}
@@ -62,6 +64,9 @@ socket.on("user-joined", () => {
 socket.on("bid:high", async (bid) => {
 	const res = await fetch(`${url_origin}/slots`);
 	const data = await res.json();
-
+	console.log(data);
 	// Update bidding cards
 });
+
+// Create new card element for new bid
+const slotCard = () => {};

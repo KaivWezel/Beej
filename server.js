@@ -68,8 +68,7 @@ io.on("connection", (socket) => {
 		socket.join(roomId);
 		socket.to(roomId).emit("user-joined");
 	});
-	socket.on("bid:high", (roomId) => {
-		console.log("high bid");
+	socket.on("bid:high", (roomId, data) => {
 		socket.to(roomId).emit("bid:high");
 	});
 });

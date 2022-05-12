@@ -14,8 +14,9 @@
 				<% slots.forEach(slot => { %>
 				<div class="slot" data-slot="<%= slot.id %>">
 					<p>om: <%= slot.time %></p>
-					<% if (slot.currentBid.song) { %>
-					<h3><%= slot.currentBid.song %></h3>
+					<% if (slot.song) { %>
+					<h3><%= slot.song %></h3>
+					<p><%= slot.amount%> - <%= slot.name %></p>
 					<% } else { %>
 					<h3>Nog geen aanvraag</h3>
 					<% } %>
