@@ -26,7 +26,8 @@ For this app, MongoDB is the database of choice. Using Mongoose (v6.3.1), I crea
 The slots are small models where I keep track of the highest bid, songrequest and with which club the slot is associated. Slots are continously updated when new bids are received and old bids are not saved.
 
 _Slot model_
-![Model in mongoose of slot](img/Slot.png)
+
+<img src="./img/Slot.png" alt="Model in mongoose of slot" width="400px">
 
 ### User
 
@@ -34,4 +35,41 @@ The user model is only needed for the clubs that register on this app. Without c
 
 _User model_
 
-<img src="img/User.png" alt="Model in mongoose of user" width="400px">
+<img src="./img/User.png" alt="Model in mongoose of user" width="400px">
+
+## Sockets
+
+The websockets are used to update clients that are in a certain room. Whenever a bidding event happens, other clients are updated with new data to keep everyone at the same level.
+
+## Feature list
+
+### Must have
+
+- [x] Club registration
+- [x] Create request slots
+- [x] Submit a request
+- [x] Live updated slot overview
+
+### Should have
+
+- [ ] Status indicators for slots (updated, closed, new bid, etc.; More socket events to add)
+- [ ] Connect with spotify api for song requests
+- [ ] Customer protection (limit bid amounts and increments)
+
+### Could have
+
+- [ ] QR-code scanner to join room
+- [ ] Blind auction mode so bidding is more exciting and less about money
+
+### Would have
+
+- [ ] Extra UI-states for feedback
+- [ ] More complex but easier to manage datastructure
+
+## Data flow
+
+! img
+
+## License
+
+Licensed by MIT, autored by Kai van Wezel
