@@ -16,6 +16,7 @@ A webapp that clubs can use to let their customers request music without being o
     - [Could have](#could-have)
     - [Would have](#would-have)
   - [Data flow](#data-flow)
+  - [Other concepts](#other-concepts)
   - [License](#license)
 
 ## Live demo
@@ -85,6 +86,14 @@ The websockets are used to update clients that are in a certain room. Whenever a
 ## Data flow
 
 ! img
+
+## Other concepts
+
+Some other conepts I had when in the ideation phase. I made some quick sketches to visualize what my ideas where;
+
+![schets 1](./img/schets1.JPG)
+![schets 2](./img/schets2.JPG)
+![schets 3](./img/schets3.JPG)
 
 ## License
 
