@@ -6,6 +6,10 @@ A webapp that clubs can use to let their customers request music without being o
   - [Live demo](#live-demo)
   - [To install](#to-install)
   - [Features](#features)
+    - [Club registration/login](#club-registrationlogin)
+    - [Club dashboard for administration and management](#club-dashboard-for-administration-and-management)
+    - [Simple customer interface](#simple-customer-interface)
+    - [Live bidding and updates](#live-bidding-and-updates)
   - [Data structure](#data-structure)
     - [Slot](#slot)
     - [User](#user)
@@ -29,10 +33,27 @@ Clone this repository using `git clone` and run `npm install` in this directory.
 
 ## Features
 
-- Club registration/login
-- Club dashboard for administration and management
-- Simple customer interface
-- Live bidding and updates
+### Club registration/login
+
+  <img src="./img/signup.png" alt="Signup form" height="200px">
+  
+  Simple sigup form with minimal information for clubs. When signing up only this info is necessary to make the app work.
+
+### Club dashboard for administration and management
+
+  <img src="./img/admin.png" alt="admin dashboard" height="300px">
+  
+  An admin dashboard where clubs can manage their room and slots.
+
+### Simple customer interface
+
+  <img src="./img/index.png" alt="user interface" height="200px">
+
+### Live bidding and updates
+
+  <img src="./img/request.png" alt="bid form" height="250px">
+
+A simple form for customers to submit their songrequest. When sent, every client get's updated via the socket to supply them with live info.
 
 ## Data structure
 
