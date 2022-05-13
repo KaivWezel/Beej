@@ -2,6 +2,22 @@
 
 A webapp that clubs can use to let their customers request music without being overloaded. Beej let's you create slots where your customers can bid to play their favourite song. To create some interaction between the club and the customer, live-bidding is enabled and customers can request any song they like without having to talk to the DJ, which is hard during a party.
 
+- [Beej](#beej)
+  - [Live demo](#live-demo)
+  - [To install](#to-install)
+  - [Features](#features)
+  - [Data structure](#data-structure)
+    - [Slot](#slot)
+    - [User](#user)
+  - [Sockets](#sockets)
+  - [Feature list](#feature-list)
+    - [Must have](#must-have)
+    - [Should have](#should-have)
+    - [Could have](#could-have)
+    - [Would have](#would-have)
+  - [Data flow](#data-flow)
+  - [License](#license)
+
 ## Live demo
 
 You can find a live demo [here](https://beej-rtw.herokuapp.com/)
