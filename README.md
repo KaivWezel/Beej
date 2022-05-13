@@ -85,7 +85,7 @@ The websockets are used to update clients that are in a certain room. Whenever a
 
 ## Data flow
 
-! img
+![dataflow of application](img/dataflow.jpeg)
 
 ## Other concepts
 
