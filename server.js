@@ -10,10 +10,11 @@ import { router as authRouter } from "./Routers/authRouter.js";
 import { router as clubRouter } from "./Routers/clubRouter.js";
 import { router as roomRouter } from "./Routers/roomRouter.js";
 import { initializePassport } from "./controllers/passport.config.js";
+import User from "./models/User.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const server = http.createServer(app);
@@ -58,8 +59,9 @@ app.use(passport.session());
 app.use(authRouter).use(clubRouter).use(roomRouter);
 
 // Routes
-app.get("/", (req, res) => {
-	res.render("index");
+app.get("/", async (req, res) => {
+	const rooms = await User.find();
+	res.render("index", { rooms });
 });
 
 io.on("connection", (socket) => {

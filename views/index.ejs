@@ -18,6 +18,12 @@
 				<input type="text" name="room" id="room" placeholder="Panterhuis" />
 				<button>Join club</button>
 			</form>
+			<h4>Beschikbare clubs</h4>
+			<ul class="clubs-list">
+				<% rooms.forEach(room => { %>
+				<li><%=room.room.roomname %></li>
+				<%}) %>
+			</ul>
 			<h2>Wat is Beej?</h2>
 			<p>
 				BeeJ is een app die het mogelijk maakt om de feestgangers in de club aan
