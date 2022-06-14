@@ -37,7 +37,7 @@ Clone this repository using `git clone` and run `npm install` in this directory.
 
   <img src="./img/signup.png" alt="Signup form" height="200px">
   
-  Simple sigup form with minimal information for clubs. When signing up only this info is necessary to make the app work.
+  Simple sigup form with minimal information for clubs. When signing up only this info is necessary to make the app work. In a production environment, we would check if the registered club exists and if they can confirm that they signed up.
 
 ### Club dashboard for administration and management
 
@@ -48,6 +48,8 @@ Clone this repository using `git clone` and run `npm install` in this directory.
 ### Simple customer interface
 
   <img src="./img/index.png" alt="user interface" height="200px">
+  
+  People can search for their club to join and start requesting songs. A list of available clubs is available to help users find a club to join. Currently the only club available is shot-amersfoort.
 
 ### Live bidding and updates
 
